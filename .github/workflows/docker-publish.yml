@@ -3,10 +3,9 @@ name: Publish Docker Images
 on:
   workflow_dispatch:  # Manual trigger
   push:
-    branches:
-      - main
-    paths:
-      - 'one-container/pihole-unbound/Dockerfile'
+    # Trigger on master branch only if changes are detected in the docker directory
+    branches: [ "master" ]
+    paths: ["docker/Dockerfile"]
 
 jobs:
   publish-image:

@@ -13,7 +13,7 @@
   "packageRules": [
     {
       "matchDatasources": ["docker"],
-      "matchFileNames": ["one-container/pihole-unbound/Dockerfile"],
+      "matchFileNames": ["one-docker/Dockerfile"],
       "updateTypes": ["major", "minor", "patch"],
       "automerge": true
     }
