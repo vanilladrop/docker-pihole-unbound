@@ -60,7 +60,7 @@ jobs:
       - name: Extract Pihole version from Dockerfile
         id: extract-version
         run: |
-          VERSION=$(grep -oP '(?<=pihole/pihole:)\S+' one-container/pihole-unbound/Dockerfile)
+          VERSION=$(grep -oP '(?<=pihole/pihole:)\S+' docker/Dockerfile)
           echo "Extracted pihole version is: $VERSION"
           echo "PIHOLE_VERSION=$VERSION" >> "$GITHUB_OUTPUT"
 
