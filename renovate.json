@@ -19,7 +19,6 @@
     {
       "matchDepNames": ["pihole/pihole"],
       "matchDatasources": ["docker"],
-      "updateTypes": ["minor", "patch"],
       "separateMultipleMinor": true,
       "separateMinorPatch": true
     }
