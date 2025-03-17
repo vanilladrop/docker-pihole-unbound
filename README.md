@@ -44,6 +44,7 @@ You can use all environment variables supported by the official Pi-hole containe
 | `REV_SERVER_TARGET` | unset | Router's IP | If conditional forwarding is enabled, set the IP of the local network router |
 | `REV_SERVER_CIDR` | unset | Reverse DNS | If conditional forwarding is enabled, set the reverse DNS zone (e.g. `192.168.0.0/24`) |
 | `WEBTHEME` | `default-light` | `<"default-dark"\|"default-darker"\|"default-light"\|"default-auto"\|"lcars">`| User interface theme to use.
+| `WEB_PORT` | 80 | `<Port>` | Listening port for the Pi-hole webserver. |
 
 Alternatively you can use an `.env` file in the same directory as your `compose.yaml` file:
 
@@ -59,6 +60,7 @@ HOSTNAME=pihole
 DOMAIN_NAME=pihole.local
 PIHOLE_WEBPORT=80
 WEBTHEME=default-light
+WEB_PORT=80
 ```
 
 ## Filing Issues

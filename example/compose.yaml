@@ -15,15 +15,17 @@ services:
     environment:
       - FTLCONF_LOCAL_IPV4=${FTLCONF_LOCAL_IPV4}
       - TZ=${TZ:-UTC}
-      - WEBPASSWORD=${WEBPASSWORD}
-      - WEBTHEME=${WEBTHEME:-default-light}
-      - REV_SERVER=${REV_SERVER:-false}
-      - REV_SERVER_TARGET=${REV_SERVER_TARGET}
-      - REV_SERVER_DOMAIN=${REV_SERVER_DOMAIN}
-      - REV_SERVER_CIDR=${REV_SERVER_CIDR}
-      - PIHOLE_DNS_=127.0.0.1#5335
-      - DNSSEC="true"
-      - DNSMASQ_LISTENING=single
+      - FTLCONF_webserver_api_password=${WEBPASSWORD}
+      - FTLCONF_webserver_interface_theme=${WEBTHEME:-default-light}
+      #- REV_SERVER=${REV_SERVER:-false}
+      #- REV_SERVER_TARGET=${REV_SERVER_TARGET}
+      #- REV_SERVER_DOMAIN=${REV_SERVER_DOMAIN}
+      #- REV_SERVER_CIDR=${REV_SERVER_CIDR}
+      - FTLCONF_dns_revServers=${REV_SERVER:-false},${REV_SERVER_CIDR},${REV_SERVER_TARGET},${REV_SERVER_DOMAIN}
+      - FTLCONF_dns_upstreams=127.0.0.1#5335
+      - FTLCONF_dns_dnssec="true"
+      - FTLCONF_dns_listeningMode=single
+      - FTLCONF_webserver_port=${WEB_PORT}
     volumes:
       - etc_pihole-unbound:/etc/pihole:rw
       - etc_pihole_dnsmasq-unbound:/etc/dnsmasq.d:rw
