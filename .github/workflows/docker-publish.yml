@@ -118,14 +118,48 @@ jobs:
         with:
           tag_name: ${{ steps.extract-version.outputs.PIHOLE_VERSION }}
           body: |
-            #### This is an update for the `one-container` configuration
+            # Pi-hole + Unbound ${{ steps.extract-version.outputs.PIHOLE_VERSION }}
 
-            - Updating Pi-Hole base image to `${{ steps.extract-version.outputs.PIHOLE_VERSION }}` ([link](https://github.com/pi-hole/docker-pi-hole/releases/tag/${{ steps.extract-version.outputs.PIHOLE_VERSION }}))
+            This release updates the Pi-hole + Unbound Docker image to the latest Pi-hole version.
 
-            #### Update instructions
+            ## What's Changed
 
+            - Updated Pi-hole base image to [`${{ steps.extract-version.outputs.PIHOLE_VERSION }}`](https://github.com/pi-hole/docker-pi-hole/releases/tag/${{ steps.extract-version.outputs.PIHOLE_VERSION }})
+            - Maintained Unbound DNS resolver integration with latest Pi-hole version
+            - All multi-architecture support: linux/amd64, linux/386, linux/arm/v6, linux/arm/v7, linux/arm64
+
+            ## Available From
+
+            The image is available from multiple registries:
+
+            - **Docker Hub**: 
+              ```
+              docker pull mpgirro/pihole-unbound:${{ steps.extract-version.outputs.PIHOLE_VERSION }}
+              docker pull mpgirro/docker-pihole-unbound:${{ steps.extract-version.outputs.PIHOLE_VERSION }}
+              ```
+
+            - **GitHub Container Registry**:
+              ```
+              docker pull ghcr.io/${{ github.repository_owner }}/docker-pihole-unbound:${{ steps.extract-version.outputs.PIHOLE_VERSION }}
+              ```
+
+            ## Verification
+
+            All images are signed with [Sigstore Cosign](https://github.com/sigstore/cosign) for enhanced security.
+
+            ## Update Instructions
+
+            ### Docker Compose
+            ```yaml
+            services:
+              pihole:
+                image: mpgirro/pihole-unbound:${{ steps.extract-version.outputs.PIHOLE_VERSION }}
+                # ...rest of your configuration...
+            ```
+
+            ### Docker CLI
             ```shell
-            docker-compose pull
-            docker-compose up -d
+            docker pull mpgirro/pihole-unbound:${{ steps.extract-version.outputs.PIHOLE_VERSION }}
+            docker run -d --name pihole-unbound mpgirro/pihole-unbound:${{ steps.extract-version.outputs.PIHOLE_VERSION }}
             ```
           make_latest: true
