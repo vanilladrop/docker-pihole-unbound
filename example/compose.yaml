@@ -20,7 +20,7 @@ services:
       - FTLCONF_dns_upstreams=127.0.0.1#5335
       - FTLCONF_dns_dnssec="true"
       - FTLCONF_dns_listeningMode=single
-      - FTLCONF_webserver_port=${WEB_PORT}
+      - FTLCONF_webserver_port=${PIHOLE_WEBPORT}
     volumes:
       - etc_pihole-unbound:/etc/pihole:rw
       - etc_pihole_dnsmasq-unbound:/etc/dnsmasq.d:rw
