@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # Manual trigger
   push:
     # Trigger on master branch only if changes are detected in the docker directory
-    branches: [ "master" ]
+    branches: [ "main" ]
     paths: ["docker/Dockerfile"]
 
 jobs:
