@@ -1,4 +1,4 @@
-FROM pihole/pihole:2025.06.2
+FROM pihole/pihole:2025.07.1
 RUN apt update && apt install -y unbound
 
 COPY lighttpd-external.conf /etc/lighttpd/external.conf 
